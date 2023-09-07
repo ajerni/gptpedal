@@ -83,16 +83,13 @@ if __name__ == "__main__":
     s = Server(buffersize=128, audio="coreaudio").boot()
     s.start()
 
-    # call GPT/langchain to create an own effect - add it to the list of effects
-    # based on the classes in effetcs.txt like Delay(PyoObject): etc. create a new class GPTEffect(PyoObject): which
-    # does blalba ...propt engineere with system and human + ev.  AI for mulitshot
+    # call GPT/langchain to fill the selections dictonary as per result of the prompt using
+    # the description stings in effects.py
 
-    # --> or just enter all availabel ones into the chain and get GPT to set the 0 and 1 right for the asked sound...
+    # then trigger fxChain...
+    # sel_dict = {} // this is what GPT should generate and is passed to fxChain then...
 
-    # GptClass = output from langchain
-
-    # when class is ready triiger fxChain...
-
+    # gets the audio signal from the soundcard
     input = Input()
     output = fxChain(
         input,

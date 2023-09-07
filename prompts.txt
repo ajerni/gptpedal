@@ -1,12 +1,8 @@
 
-you are python expert using the pyo library to create a class that produces a sort of athmospheric effect. Do it based on the pyo classes form effects.py like Delay(PyoObject) for exapmle. Anser with the finished class only. Always inherit from PyoObject.
+you are python expert using the pyo library. Read the description strings from the effects.py file and try to
+understand what the parameters do.
 
-The class should have a method play(self, input) that takes a pyo object as input and plays it through the effect.
-
-The class should have a method stop(self) that stops the effect.
-
-only use the existing classes from effects.py. Keep it short and simple. Do not halizunate. Write corrcet code only.
 
 ****
 
-statt eingene Klasse schreiben, einfach das gegebene Gerüst + PARAMETER gut mti 0 und 1 füllen lassen!!!
+das gegebene dict inkl USE + PARAMETER gut mit 0 und 1 (und Parameter) füllen lassen gem. prompt!!!
