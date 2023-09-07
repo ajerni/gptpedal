@@ -70,9 +70,9 @@ def fxChain(input, selections):
         mul=selections["freeverb"]["mul"],
         add=selections["freeverb"]["add"],
     )
-    fx5_out = Interp(fx5_out, fx6, interp=selections["freeverb"]["use"])
+    fx6_out = Interp(fx5_out, fx6, interp=selections["freeverb"]["use"])
     if selections["freeverb"]["use"] == 1:
-        fx5.ctrl(title="Freeverb")
+        fx6.ctrl(title="Freeverb")
 
     # and so on...
 
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     # based on the classes in effetcs.txt like Delay(PyoObject): etc. create a new class GPTEffect(PyoObject): which
     # does blalba ...propt engineere with system and human + ev.  AI for mulitshot
 
-    # --> or just enter all availabel onse into the chain and get GPT to set the 0 and 1 right for the asked sound...
+    # --> or just enter all availabel ones into the chain and get GPT to set the 0 and 1 right for the asked sound...
 
     # GptClass = output from langchain
 
