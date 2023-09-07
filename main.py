@@ -35,19 +35,48 @@ def fxChain(input, selections):
     )
     fx3_out = Interp(fx2_out, fx3, interp=selections["sdelay"]["use"])
     if selections["sdelay"]["use"] == 1:
-        fx3.ctrl(title="Delay")
+        fx3.ctrl(title="SDelay")
 
-    # fx4 = STRev(fx3_out)
-    # fx4_out = Interp(fx3_out, fx4, interp=selections["stereo"])
-    # fx4.ctrl(title="Stereo Reverb")
+    fx4 = Waveguide(
+        fx3_out,
+        freq=selections["waveguide"]["freq"],
+        dur=selections["waveguide"]["dur"],
+        minfreq=selections["waveguide"]["minfreq"],
+        mul=selections["waveguide"]["mul"],
+        add=selections["waveguide"]["add"],
+    )
+    fx4_out = Interp(fx3_out, fx4, interp=selections["waveguide"]["use"])
+    if selections["waveguide"]["use"] == 1:
+        fx4.ctrl(title="Waveguide")
 
-    # fx5 = Waveguide(fx4_out)
-    # fx5_out = Interp(fx4_out, fx5, interp=selections["wave"])
-    # fx5.ctrl(title="Waveguide")
+    fx5 = AllpassWG(
+        fx4_out,
+        freq=selections["allpass"]["freq"],
+        feed=selections["allpass"]["feed"],
+        detune=selections["allpass"]["detune"],
+        minfreq=selections["allpass"]["minfreq"],
+        mul=selections["allpass"]["mul"],
+        add=selections["allpass"]["add"],
+    )
+    fx5_out = Interp(fx4_out, fx5, interp=selections["allpass"]["use"])
+    if selections["allpass"]["use"] == 1:
+        fx5.ctrl(title="Allpass")
+
+    fx6 = Freeverb(
+        fx5_out,
+        size=selections["freeverb"]["size"],
+        damp=selections["freeverb"]["damp"],
+        bal=selections["freeverb"]["bal"],
+        mul=selections["freeverb"]["mul"],
+        add=selections["freeverb"]["add"],
+    )
+    fx5_out = Interp(fx5_out, fx6, interp=selections["freeverb"]["use"])
+    if selections["freeverb"]["use"] == 1:
+        fx5.ctrl(title="Freeverb")
 
     # and so on...
 
-    return fx3_out
+    return fx6_out
 
 
 if __name__ == "__main__":
@@ -78,6 +107,31 @@ if __name__ == "__main__":
                 "add": 0,
             },
             "sdelay": {"use": 1, "delay": 0.25, "maxdelay": 1, "mul": 1, "add": 0},
+            "waveguide": {
+                "use": 0,
+                "freq": 100,
+                "dur": 10,
+                "minfreq": 20,
+                "mul": 1,
+                "add": 0,
+            },
+            "allpass": {
+                "use": 0,
+                "freq": 100,
+                "feed": 0.95,
+                "detune": 0.5,
+                "minfreq": 20,
+                "mul": 1,
+                "add": 0,
+            },
+            "freeverb": {
+                "use": 1,
+                "size": 0.5,
+                "damp": 0.5,
+                "bal": 0.5,
+                "mul": 1,
+                "add": 0,
+            },
         },
     )
     stereo = output.mix(2).out()
