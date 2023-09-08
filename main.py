@@ -170,7 +170,7 @@ if __name__ == "__main__":
 
     # call GPT/langchain to fill the selections dictonary as per result of the prompt using
 
-    q = "A simple Chorus"
+    q = "A simple chorus effect"
     sel_dict = generateEffect(q)
     print(sel_dict)
 

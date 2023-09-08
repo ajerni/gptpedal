@@ -38,12 +38,13 @@ def generateEffect(query):
 
     system_template = """You are a python expert using the pyo library for audio signal processing.
     You always use this template to embed your reply: {dictionary_template}. In this dictionary you fill in the values of the
-    parameters that you need to create the desired sound effect. "use":1 swichtes on an effect and "use":0 does not use that effect.
-    You always reply with the filled in parameters dictionary only.
+    parameters that you need to create the desired sound effect. Do not change the structure of this template. Just adjust the parameters to your needs.
+    "use":1 swichtes on an effect and "use":0 does not use that effect.
+    You always reply with the filled in parameters dictionary only. No explanations, no other text.
     """
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
 
-    human_template = "Create a sound effect for: {input_question}. Reply with the filled in parameters dictionary only."
+    human_template = "Use this description to adust your template: {output_from_qa}. Reply with the whole filled in parameters dictionary."
     human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
 
     chat_prompt = ChatPromptTemplate.from_messages(
@@ -52,7 +53,7 @@ def generateEffect(query):
 
     response_chain = LLMChain(llm=llm, prompt=chat_prompt)
     res = response_chain.run(
-        dictionary_template=default_values, input_question=response
+        dictionary_template=default_values, output_from_qa=response
     )
     print(res)
     return res
