@@ -5,7 +5,7 @@ import ast
 
 
 if __name__ == "__main__":
-    q = "A simple delay"  # example "A short delay" works
+    q = "A light distortion running into a big reverb"  # example "A short delay" works
     sel_dict_string = generateEffect(q)
 
     sel_dict_dict = ast.literal_eval(sel_dict_string)
