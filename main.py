@@ -74,9 +74,69 @@ def fxChain(input, selections):
     if selections["freeverb"]["use"] == 1:
         fx6.ctrl(title="Freeverb")
 
+    fx7 = WGVerb(
+        fx6_out,
+        feedback=selections["monoreverb"]["feedback"],
+        cutoff=selections["monoreverb"]["cutoff"],
+        bal=selections["monoreverb"]["bal"],
+        mul=selections["monoreverb"]["mul"],
+        add=selections["monoreverb"]["add"],
+    )
+    fx7_out = Interp(fx6_out, fx7, interp=selections["monoreverb"]["use"])
+    if selections["monoreverb"]["use"] == 1:
+        fx7.ctrl(title="Mono Reverb")
+
+    fx8 = Chorus(
+        fx7_out,
+        depth=selections["chorus"]["depth"],
+        feedback=selections["chorus"]["feedback"],
+        bal=selections["chorus"]["bal"],
+        mul=selections["chorus"]["mul"],
+        add=selections["chorus"]["add"],
+    )
+    fx8_out = Interp(fx7_out, fx8, interp=selections["chorus"]["use"])
+    if selections["chorus"]["use"] == 1:
+        fx8.ctrl(title="Chorus")
+
+    fx9 = Harmonizer(
+        fx8_out,
+        transpo=selections["harmonizer"]["transpo"],
+        feedback=selections["harmonizer"]["feedback"],
+        winsize=selections["harmonizer"]["winsize"],
+        mul=selections["harmonizer"]["mul"],
+        add=selections["harmonizer"]["add"],
+    )
+    fx9_out = Interp(fx8_out, fx9, interp=selections["harmonizer"]["use"])
+    if selections["harmonizer"]["use"] == 1:
+        fx9.ctrl(title="Harmonizer")
+
+    fx10 = Delay1(
+        fx9_out,
+        mul=selections["simpledelay"]["mul"],
+        add=selections["simpledelay"]["add"],
+    )
+    fx10_out = Interp(fx9_out, fx10, interp=selections["simpledelay"]["use"])
+    if selections["simpledelay"]["use"] == 1:
+        fx10.ctrl(title="Delay 1")
+
+    fx11 = STRev(
+        fx10_out,
+        inpos=selections["stereoreverb"]["inpos"],
+        revtime=selections["stereoreverb"]["revtime"],
+        cutoff=selections["stereoreverb"]["cutoff"],
+        bal=selections["stereoreverb"]["bal"],
+        roomSize=selections["stereoreverb"]["roomSize"],
+        firstRefGain=selections["stereoreverb"]["firstRefGain"],
+        mul=selections["stereoreverb"]["mul"],
+        add=selections["stereoreverb"]["add"],
+    )
+    fx11_out = Interp(fx10_out, fx11, interp=selections["stereoreverb"]["use"])
+    if selections["stereoreverb"]["use"] == 1:
+        fx11.ctrl(title="Stereo Reverb")
+
     # and so on...
 
-    return fx6_out
+    return fx11_out
 
 
 if __name__ == "__main__":
@@ -126,6 +186,42 @@ if __name__ == "__main__":
                 "size": 0.5,
                 "damp": 0.5,
                 "bal": 0.5,
+                "mul": 1,
+                "add": 0,
+            },
+            "monoreverb": {
+                "use": 0,
+                "feedback": 0.5,
+                "cutoff": 5000,
+                "bal": 0.5,
+                "mul": 1,
+                "add": 0,
+            },
+            "chorus": {
+                "use": 1,
+                "depth": 1,
+                "feedback": 0.25,
+                "bal": 0.5,
+                "mul": 1,
+                "add": 0,
+            },
+            "harmonizer": {
+                "use": 0,
+                "transpo": -7.0,
+                "feedback": 0,
+                "winsize": 0.1,
+                "mul": 1,
+                "add": 0,
+            },
+            "simpledelay": {"use": 0, "mul": 1, "add": 0},
+            "stereoreverb": {
+                "use": 1,
+                "inpos": 0.5,
+                "revtime": 1,
+                "cutoff": 5000,
+                "bal": 0.5,
+                "roomSize": 1,
+                "firstRefGain": -3,
                 "mul": 1,
                 "add": 0,
             },
