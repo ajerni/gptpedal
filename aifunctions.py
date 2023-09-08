@@ -34,17 +34,18 @@ def generateEffect(query):
     similars = vectorstore.similarity_search(query=query, k=3)
     qa_chain = load_qa_chain(llm=llm, chain_type="stuff")
     response = qa_chain.run(input_documents=similars, question=query)
-    print(response)
+    # print(response)
 
     system_template = """You are a python expert using the pyo library for audio signal processing.
     You always use this template to embed your reply: {dictionary_template}. In this dictionary you fill in the values of the
     parameters that you need to create the desired sound effect. Do not change the structure of this template. Just adjust the parameters to your needs.
     "use":1 swichtes on an effect and "use":0 does not use that effect.
-    You always reply with the filled in parameters dictionary only. No explanations, no other text.
+    You always reply with the complete dictionary template. Also keep the values in the template that
+    you did not change to create the effet. Your reply is the complete dictionary only. Do not add any explanation.
     """
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
 
-    human_template = "Use this description to adust your template: {output_from_qa}. Reply with the whole filled in parameters dictionary."
+    human_template = "Use this description to adust your template: {output_from_qa}.\nFormat instructions: No explanations or text in your reply. Only reply with the completely filled parameters dictionary template."
     human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
 
     chat_prompt = ChatPromptTemplate.from_messages(
@@ -55,5 +56,5 @@ def generateEffect(query):
     res = response_chain.run(
         dictionary_template=default_values, output_from_qa=response
     )
-    print(res)
+    # print(res)
     return res
