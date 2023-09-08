@@ -1,8 +1,0 @@
-
-you are python expert using the pyo library. Read the description strings from the effects.py file and try to
-understand what the parameters do.
-
-
-****
-
-das gegebene dict inkl USE + PARAMETER gut mit 0 und 1 (und Parameter) füllen lassen gem. prompt!!!

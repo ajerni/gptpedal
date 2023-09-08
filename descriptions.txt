@@ -3,7 +3,7 @@ Objects to perform specific audio signal processing effects such
 as distortions, delays, chorus and reverbs.
 """
 - the "use" parameter of each dictionary defines if an effect should be applied (1) or not (0)
-- all other parameters of the dictionaries are used to finetune the effects
+- all other parameters of the dictionaries are used to finetune the effects. Use them to acomplish your task.
 
 Parameters for "disto": {"use": 0, "drive": 0.75, "slope": 0.5, "mul": 1, "add": 0} are described in class Disto:
 class Disto(PyoObject):

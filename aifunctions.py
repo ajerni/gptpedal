@@ -11,7 +11,6 @@ from langchain.prompts.chat import (
     HumanMessagePromptTemplate,
 )
 
-# from parameter_desc import PARAMDESC
 from sel_default_values import default_values
 
 from dotenv import load_dotenv
@@ -34,7 +33,6 @@ def generateEffect(query):
     similars = vectorstore.similarity_search(query=query, k=3)
     qa_chain = load_qa_chain(llm=llm, chain_type="stuff")
     response = qa_chain.run(input_documents=similars, question=query)
-    # print(response)
 
     system_template = """You are a python expert using the pyo library for audio signal processing.
     You always use this template to embed your reply: {dictionary_template}. In this dictionary you fill in the values of the
@@ -45,7 +43,7 @@ def generateEffect(query):
     """
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
 
-    human_template = "Use this description to adust your template: {output_from_qa}.\nFormat instructions: No explanations or text in your reply. Only reply with the completely filled parameters dictionary template."
+    human_template = "Use this description to adjust your template: {output_from_qa}.\nFormat instructions: No explanations or text in your reply. Only reply with the completely filled parameters dictionary template."
     human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
 
     chat_prompt = ChatPromptTemplate.from_messages(
@@ -56,5 +54,5 @@ def generateEffect(query):
     res = response_chain.run(
         dictionary_template=default_values, output_from_qa=response
     )
-    # print(res)
+
     return res
