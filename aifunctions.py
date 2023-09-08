@@ -41,7 +41,7 @@ def generateEffect(query):
     parameters that you need to create the desired sound effect. Do not change the structure of this template. Just adjust the parameters to your needs.
     "use":1 swichtes on an effect and "use":0 does not use that effect.
     You always reply with the complete dictionary template. Also keep the values in the template that
-    you did not change to create the effet. Your reply is the complete dictionary only. Do not add any explanation.
+    you did not change to create the effet. Your reply is the complete dictionary only (formatted as a string with opening " and closing " to avoid SyntaxError: unterminated string literal). Do not add any explanation.
     """
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
 
