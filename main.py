@@ -1,4 +1,5 @@
 from pyo import *
+from parameter_desc import PARAMDESC
 
 
 def fxChain(input, selections):
@@ -166,8 +167,10 @@ if __name__ == "__main__":
     s = Server(buffersize=128, audio="coreaudio").boot()
     s.start()
 
+    # print(PARAMDESC)
+
     # call GPT/langchain to fill the selections dictonary as per result of the prompt using
-    # the description stings in effects.py
+    # the descriptions stings in PARAMDESC
 
     # then trigger fxChain...
     # sel_dict = {} // this is what GPT should generate and is passed to fxChain then...
