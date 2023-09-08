@@ -60,7 +60,7 @@ def generateEffect(query):
     The output should be formatted like the input template but with opening " and closing " to allow conversion from string to dict later on.
     Here is the output schema:
     ```
-    "{default_values}"
+    {default_values}
     ```
 
     """
