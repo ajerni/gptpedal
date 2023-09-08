@@ -12,8 +12,6 @@ from langchain.prompts.chat import (
 )
 import json
 
-# from sel_default_values import default_values
-
 with open("sel_default_values.txt", "r") as f:
     default_values = json.load(f)
 
