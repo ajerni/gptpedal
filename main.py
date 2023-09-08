@@ -134,9 +134,32 @@ def fxChain(input, selections):
     if selections["stereoreverb"]["use"] == 1:
         fx11.ctrl(title="Stereo Reverb")
 
+    fx12 = SmoothDelay(
+        fx11_out,
+        delay=selections["smoothdelay"]["delay"],
+        feedback=selections["smoothdelay"]["feedback"],
+        crossfade=selections["smoothdelay"]["crossfade"],
+        maxdelay=selections["smoothdelay"]["maxdelay"],
+        mul=selections["smoothdelay"]["mul"],
+        add=selections["smoothdelay"]["add"],
+    )
+    fx12_out = Interp(fx11_out, fx12, interp=selections["smoothdelay"]["use"])
+    if selections["smoothdelay"]["use"] == 1:
+        fx12.ctrl(title="Smooth Delay")
+
+    fx13 = FreqShift(
+        fx12_out,
+        shift=selections["freqshift"]["shift"],
+        mul=selections["freqshift"]["mul"],
+        add=selections["freqshift"]["add"],
+    )
+    fx13_out = Interp(fx12_out, fx13, interp=selections["freqshift"]["use"])
+    if selections["freqshift"]["use"] == 1:
+        fx13.ctrl(title="Frequency Shifter")
+
     # and so on...
 
-    return fx11_out
+    return fx13_out
 
 
 if __name__ == "__main__":
@@ -225,6 +248,16 @@ if __name__ == "__main__":
                 "mul": 1,
                 "add": 0,
             },
+            "smoothdelay": {
+                "use": 1,
+                "delay": 0.25,
+                "feedback": 0,
+                "crossfade": 0.05,
+                "maxdelay": 1,
+                "mul": 1,
+                "add": 0,
+            },
+            "freqshift": {"use": 0, "shift": 100, "mul": 1, "add": 0},
         },
     )
     stereo = output.mix(2).out()
