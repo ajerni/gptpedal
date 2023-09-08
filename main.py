@@ -1,6 +1,6 @@
 from pyo import *
 from parameter_desc import PARAMDESC
-from .langchain.functions import generateEffect
+from aifunctions import generateEffect
 
 
 def fxChain(input, selections):
@@ -168,10 +168,8 @@ if __name__ == "__main__":
     s = Server(buffersize=128, audio="coreaudio").boot()
     s.start()
 
-    # print(PARAMDESC)
-
     # call GPT/langchain to fill the selections dictonary as per result of the prompt using
-    # the descriptions stings in PARAMDESC
+
     q = "A simple Chorus"
     sel_dict = generateEffect(q)
     print(sel_dict)
