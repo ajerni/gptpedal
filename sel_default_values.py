@@ -9,14 +9,7 @@ default_values = {
         "add": 0,
     },
     "sdelay": {"use": 0, "delay": 0.25, "maxdelay": 1, "mul": 1, "add": 0},
-    "waveguide": {
-        "use": 0,
-        "freq": 100,
-        "dur": 10,
-        "minfreq": 20,
-        "mul": 1,
-        "add": 0,
-    },
+    "waveguide": {"use": 0, "freq": 100, "dur": 10, "minfreq": 20, "mul": 1, "add": 0},
     "allpass": {
         "use": 0,
         "freq": 100,
@@ -26,14 +19,7 @@ default_values = {
         "mul": 1,
         "add": 0,
     },
-    "freeverb": {
-        "use": 0,
-        "size": 0.5,
-        "damp": 0.5,
-        "bal": 0.5,
-        "mul": 1,
-        "add": 0,
-    },
+    "freeverb": {"use": 0, "size": 0.5, "damp": 0.5, "bal": 0.5, "mul": 1, "add": 0},
     "monoreverb": {
         "use": 0,
         "feedback": 0.5,
@@ -42,14 +28,7 @@ default_values = {
         "mul": 1,
         "add": 0,
     },
-    "chorus": {
-        "use": 0,
-        "depth": 1,
-        "feedback": 0.25,
-        "bal": 0.5,
-        "mul": 1,
-        "add": 0,
-    },
+    "chorus": {"use": 0, "depth": 1, "feedback": 0.25, "bal": 0.5, "mul": 1, "add": 0},
     "harmonizer": {
         "use": 0,
         "transpo": -7.0,

@@ -10,8 +10,13 @@ from langchain.prompts.chat import (
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
 )
+import json
 
-from sel_default_values import default_values
+# from sel_default_values import default_values
+
+with open("sel_default_values.txt", "r") as f:
+    default_values = json.load(f)
+
 
 from dotenv import load_dotenv
 
@@ -43,16 +48,28 @@ def generateEffect(query):
     """
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
 
-    human_template = "Use this description to adjust your template: {output_from_qa}.\nFormat instructions: No explanations or text in your reply. Only reply with the completely filled parameters dictionary template."
+    # human_template = "Use this description to adjust your template: {output_from_qa}.\nFormat instructions: No explanations or text in your reply. Only reply with the completely filled parameters dictionary template."
+    human_template = "Use this description to adjust your template: {output_from_qa}.\n{format_instructions}"
     human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
 
     chat_prompt = ChatPromptTemplate.from_messages(
-        [system_message_prompt, human_message_prompt]
+        [system_message_prompt, human_message_prompt],
     )
+
+    format_instructions = """
+    The output should be formatted like the input template but with opening " and closing " to allow conversion from string to dict later on.
+    Here is the output schema:
+    ```
+    "{default_values}"
+    ```
+
+    """
 
     response_chain = LLMChain(llm=llm, prompt=chat_prompt)
     res = response_chain.run(
-        dictionary_template=default_values, output_from_qa=response
+        dictionary_template=default_values,
+        output_from_qa=response,
+        format_instructions=format_instructions,
     )
 
     return res

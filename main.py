@@ -6,7 +6,7 @@ import ast
 if __name__ == "__main__":
     # call GPT/langchain to fill the selections dictonary as per result of the prompt q
     # TODO: get this q string form any input (like mic on rapi)
-    q = "A short delay"  # example "A short delay" works
+    q = "A distortion with low drive"  # example "A short delay" works
     sel_dict_string = generateEffect(q)
 
     # Convert string to dictionary / this is what GPT generated and is passed to fxChain
