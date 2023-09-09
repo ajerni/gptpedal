@@ -16,10 +16,10 @@ def getGPTeffect(q):
 
 
 if __name__ == "__main__":
-    # q = "A chorus and a reverb"
-    # getGPTeffect(q)
+    q = "A chorus and a reverb"
+    getGPTeffect(q)
 
-    sel_dict = presets.CHORUS
+    # sel_dict = presets.CHORUS
 
     if sel_dict is not None:
         s = Server(buffersize=128, audio="coreaudio").boot()
