@@ -12,18 +12,18 @@ class Presets:
     DOPPELVERB: dict = {
         "freeverb": {
             "use": 1,
-            "size": 0.5,
-            "damp": 0.5,
-            "bal": 0.5,
+            "size": 0.708,
+            "damp": 0.592,
+            "bal": 0.492,
             "mul": 1,
             "add": 0,
         },
         "monoreverb": {
             "use": 1,
-            "feedback": 0.5,
-            "cutoff": 5000,
+            "feedback": 0.6,
+            "cutoff": 1623,
             "bal": 0.5,
-            "mul": 1,
+            "mul": 1.538,
             "add": 0,
         },
     }
@@ -54,6 +54,16 @@ class Presets:
             "delay": 0.1,
             "feedback": 0,
             "maxdelay": 1,
+            "mul": 1,
+            "add": 0,
+        }
+    }
+    PHASER: dict = {
+        "phaser": {
+            "use": 0,
+            "depth": 0.7,
+            "feedback": 0.25,
+            "bal": 0.5,
             "mul": 1,
             "add": 0,
         }

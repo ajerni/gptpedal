@@ -69,3 +69,21 @@ def generateEffect(query):
     )
 
     return res
+
+
+def createNewClass(query):
+    loader = TextLoader("effects_full.txt")
+    documents = loader.load()
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    docs = text_splitter.split_documents(documents)
+
+    embeddings = OpenAIEmbeddings()
+
+    vectorstore = FAISS.from_documents(docs, embeddings)
+
+    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+
+    similars = vectorstore.similarity_search(query=query, k=3)
+    qa_chain = load_qa_chain(llm=llm, chain_type="stuff")
+    response = qa_chain.run(input_documents=similars, question=query)
+    print(response)

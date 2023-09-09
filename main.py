@@ -1,5 +1,5 @@
 from pyo import *
-from aifunctions import generateEffect
+from aifunctions import generateEffect, createNewClass
 from fxchain import fxChain
 import ast
 from presets import presets
@@ -31,8 +31,13 @@ def startServer(sel_dict):
 
 
 if __name__ == "__main__":
-    q = "A hard distortion with phaser effect"
-    getGPTeffect(q)
+    # q = "A hard distortion fed into long delay"
+    # getGPTeffect(q)
 
-    # p = presets.DOPPELVERB
-    # getPresetEffect(p)
+    p = presets.DOPPELVERB
+    getPresetEffect(p)
+
+    # class_name = "Phaser"
+    # createNewClass(
+    #     f"You are Python expert using the pyo library to create sound effects. Based on how the extisting classes work, create a new class {class_name}(PyoObject): that creates a {class_name} effect."
+    # )
