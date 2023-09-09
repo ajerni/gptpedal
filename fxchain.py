@@ -174,8 +174,8 @@ def fxChain(input, selections):
     # fx14_params = selections.get("phaser", {})
     # fx14 = Phaser(
     #     fx13_out,
-    #     depth=fx14_params.get("depth", 1),
-    #     feedback=fx14_params.get("feedback", 0.25),
+    #     depth=fx14_params.get("depth", 0.5),
+    #     feedback=fx14_params.get("feedback", 0.5),
     #     bal=fx14_params.get("bal", 0.5),
     #     mul=fx14_params.get("mul", 1),
     #     add=fx14_params.get("add", 0),

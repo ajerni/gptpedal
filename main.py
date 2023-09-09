@@ -1,5 +1,7 @@
 from pyo import *
-from aifunctions import generateEffect, createNewClass
+from aifunctions import generateEffect
+
+# from aifunctions import createNewClass
 from fxchain import fxChain
 import ast
 from presets import presets
@@ -34,9 +36,16 @@ if __name__ == "__main__":
     # q = "A shimmery stereo reverb with a 300ms tail."
     # getGPTeffect(q)
 
-    p = presets.TEST
+    p = presets.CHORUS
     getPresetEffect(p)
 
+    # experimental to create whole new pyo classes
+    #
+    #  - move output to own_classes.py
+    #  - add it to the presets.py file
+    #  - add it to the sel_defaults_values.txt
+    #  - add it to the fxchain.py file
+    #
     # class_name = "Phaser"
     # createNewClass(
     #     f"You are Python expert using the pyo library to create sound effects. Based on how the extisting classes work, create a new class {class_name}(PyoObject): that creates a {class_name} effect."

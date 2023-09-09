@@ -70,8 +70,8 @@ class Presets:
     PHASER: dict = {
         "phaser": {
             "use": 0,
-            "depth": 1,
-            "feedback": 0.25,
+            "depth": 0.5,
+            "feedback": 0.5,
             "bal": 0.5,
             "mul": 1,
             "add": 0,
