@@ -36,17 +36,16 @@ def generateEffect(query):
     similars = vectorstore.similarity_search(query=query, k=3)
     qa_chain = load_qa_chain(llm=llm, chain_type="stuff")
     response = qa_chain.run(input_documents=similars, question=query)
+    print(response)
 
     system_template = """You are a python expert using the pyo library for audio signal processing.
     You always use this template to embed your reply: {dictionary_template}. In this dictionary you fill in the values of the
     parameters that you need to create the desired sound effect. Do not change the structure of this template. Just adjust the parameters to your needs.
     "use":1 swichtes on an effect and "use":0 does not use that effect.
-    You always reply with the complete dictionary template. Also keep the values in the template that
-    you did not change to create the effet. Your reply is the complete dictionary only (formatted as a string with opening " and closing " to avoid SyntaxError: unterminated string literal). Do not add any explanation.
+    You always reply with a complete dictionary template for the effects you used. Your reply is the complete dictionary only (formatted as a string with opening " and closing " to avoid SyntaxError: unterminated string literal). Do not add any explanation.
     """
     system_message_prompt = SystemMessagePromptTemplate.from_template(system_template)
 
-    # human_template = "Use this description to adjust your template: {output_from_qa}.\nFormat instructions: No explanations or text in your reply. Only reply with the completely filled parameters dictionary template."
     human_template = "Use this description to adjust your template: {output_from_qa}.\n{format_instructions}"
     human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
 
@@ -55,12 +54,11 @@ def generateEffect(query):
     )
 
     format_instructions = """
-    The output should be formatted like the input template but with opening " and closing " to allow conversion from string to dict later on.
+    The output should be formatted like the input template but only contain the used effects and with opening " and closing " arround the whole output to allow conversion from string to dict later on.
     Here is the output schema:
     ```
     {default_values}
     ```
-
     """
 
     response_chain = LLMChain(llm=llm, prompt=chat_prompt)

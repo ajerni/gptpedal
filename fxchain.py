@@ -11,7 +11,7 @@ def fxChain(input, selections):
         add=fx1_params.get("add", 0),
     )
     fx1_out = Interp(input, fx1, interp=fx1_params.get("use", 0))
-    if fx1_params.get("use", 0) == 1:
+    if fx1_params.get("use") == 1:
         fx1.ctrl(title="Distortion")
 
     fx2_params = selections.get("delay", {})
@@ -24,7 +24,7 @@ def fxChain(input, selections):
         add=fx2_params.get("add", 0),
     )
     fx2_out = Interp(fx1_out, fx2, interp=fx2_params.get("use", 0))
-    if fx2_params.get("use", 0) == 1:
+    if fx2_params.get("use") == 1:
         fx2.ctrl(title="Delay")
 
     fx3_params = selections.get("sdelay", {})
@@ -36,7 +36,7 @@ def fxChain(input, selections):
         add=fx3_params.get("add", 0),
     )
     fx3_out = Interp(fx2_out, fx3, interp=fx3_params.get("use", 0))
-    if fx3_params.get("use", 0) == 1:
+    if fx3_params.get("use") == 1:
         fx3.ctrl(title="SDelay")
 
     fx4_params = selections.get("waveguide", {})
@@ -49,7 +49,7 @@ def fxChain(input, selections):
         add=fx4_params.get("add", 0),
     )
     fx4_out = Interp(fx3_out, fx4, interp=fx4_params.get("use", 0))
-    if fx4_params.get("use", 0) == 1:
+    if fx4_params.get("use") == 1:
         fx4.ctrl(title="Waveguide")
 
     fx5_params = selections.get("allpass", {})
@@ -63,7 +63,7 @@ def fxChain(input, selections):
         add=fx5_params.get("add", 0),
     )
     fx5_out = Interp(fx4_out, fx5, interp=fx5_params.get("use", 0))
-    if fx5_params.get("use", 0) == 1:
+    if fx5_params.get("use") == 1:
         fx5.ctrl(title="Allpass")
 
     fx6_params = selections.get("freeverb", {})
@@ -76,7 +76,7 @@ def fxChain(input, selections):
         add=fx6_params.get("add", 0),
     )
     fx6_out = Interp(fx5_out, fx6, interp=fx6_params.get("use", 0))
-    if fx6_params.get("use", 0) == 1:
+    if fx6_params.get("use") == 1:
         fx6.ctrl(title="Freeverb")
 
     fx7_params = selections.get("monoreverb", {})
@@ -89,7 +89,7 @@ def fxChain(input, selections):
         add=fx7_params.get("add", 0),
     )
     fx7_out = Interp(fx6_out, fx7, interp=fx7_params.get("use", 0))
-    if fx7_params.get("use", 0) == 1:
+    if fx7_params.get("use") == 1:
         fx7.ctrl(title="Mono Reverb")
 
     fx8_params = selections.get("chorus", {})
@@ -102,7 +102,7 @@ def fxChain(input, selections):
         add=fx8_params.get("add", 0),
     )
     fx8_out = Interp(fx7_out, fx8, interp=fx8_params.get("use", 0))
-    if fx8_params.get("use", 0) == 1:
+    if fx8_params.get("use") == 1:
         fx8.ctrl(title="Chorus")
 
     fx9_params = selections.get("harmonizer", {})
@@ -115,7 +115,7 @@ def fxChain(input, selections):
         add=fx9_params.get("add", 0),
     )
     fx9_out = Interp(fx8_out, fx9, interp=fx9_params.get("use", 0))
-    if fx9_params.get("use", 0) == 1:
+    if fx9_params.get("use") == 1:
         fx9.ctrl(title="Harmonizer")
 
     fx10_params = selections.get("simpledelay", {})
@@ -125,7 +125,7 @@ def fxChain(input, selections):
         add=fx10_params.get("add", 0),
     )
     fx10_out = Interp(fx9_out, fx10, interp=fx10_params.get("use", 0))
-    if fx10_params.get("use", 0) == 1:
+    if fx10_params.get("use") == 1:
         fx10.ctrl(title="Delay 1")
 
     fx11_params = selections.get("stereoreverb", {})
@@ -141,7 +141,7 @@ def fxChain(input, selections):
         add=fx11_params.get("add", 0),
     )
     fx11_out = Interp(fx10_out, fx11, interp=fx11_params.get("use", 0))
-    if fx11_params.get("use", 0) == 1:
+    if fx11_params.get("use") == 1:
         fx11.ctrl(title="Stereo Reverb")
 
     fx12_params = selections.get("smoothdelay", {})
@@ -155,7 +155,7 @@ def fxChain(input, selections):
         add=fx12_params.get("add", 0),
     )
     fx12_out = Interp(fx11_out, fx12, interp=fx12_params.get("use", 0))
-    if fx12_params.get("use", 0) == 1:
+    if fx12_params.get("use") == 1:
         fx12.ctrl(title="Smooth Delay")
 
     fx13_params = selections.get("freqshift", {})
@@ -166,8 +166,7 @@ def fxChain(input, selections):
         add=fx13_params.get("add", 0),
     )
     fx13_out = Interp(fx12_out, fx13, interp=fx13_params.get("use", 0))
-    if fx13_params.get("use", 0) == 1:
+    if fx13_params.get("use") == 1:
         fx13.ctrl(title="Frequency Shifter")
 
-    # Return the final output
     return fx13_out
