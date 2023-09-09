@@ -31,10 +31,10 @@ def startServer(sel_dict):
 
 
 if __name__ == "__main__":
-    # q = "A hard distortion fed into long delay"
+    # q = "A shimmery stereo reverb with a 300ms tail."
     # getGPTeffect(q)
 
-    p = presets.DOPPELVERB
+    p = presets.TEST
     getPresetEffect(p)
 
     # class_name = "Phaser"

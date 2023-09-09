@@ -49,19 +49,28 @@ class Presets:
         },
     }
     TEST: dict = {
-        "delay": {
+        "disto": {"use": 1, "drive": 0.6, "slope": 0.5, "mul": 1, "add": 0},
+        "freeverb": {
             "use": 1,
-            "delay": 0.1,
-            "feedback": 0,
-            "maxdelay": 1,
+            "size": 0.708,
+            "damp": 0.592,
+            "bal": 0.492,
             "mul": 1,
             "add": 0,
-        }
+        },
+        "monoreverb": {
+            "use": 1,
+            "feedback": 0.6,
+            "cutoff": 1623,
+            "bal": 0.5,
+            "mul": 1.538,
+            "add": 0,
+        },
     }
     PHASER: dict = {
         "phaser": {
             "use": 0,
-            "depth": 0.7,
+            "depth": 1,
             "feedback": 0.25,
             "bal": 0.5,
             "mul": 1,

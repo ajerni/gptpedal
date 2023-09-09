@@ -13,15 +13,24 @@ class Phaser(PyoObject):
         in_fader, depth, feedback, bal, mul, add, lmax = convertArgsToLists(
             self._in_fader, depth, feedback, bal, mul, add
         )
-        self._base_objs = [
-            Phaser_base(
-                wrap(in_fader, i),
-                wrap(depth, i),
-                wrap(feedback, i),
-                wrap(bal, i),
-                wrap(mul, i),
-                wrap(add, i),
-            )
-            for i in range(lmax)
+
+        # Create delay lines for each voice and mix them
+        self._delay_lines = [
+            Delay(in_fader[i], delay=0.001 + i * 0.001, feedback=feedback[i])
+            for i in range(len(in_fader))
         ]
+        self._mix = Mix(self._delay_lines, voices=len(in_fader))
+
+        # Apply balance control
+        self._phaser_output = self._mix * bal + self._in_fader * (1 - bal)
+
         self._init_play()
+
+    def ctrl(self, map_list=None, title=None, wxnoserver=False):
+        self._map_list = [
+            SLMap(0.0, 5.0, "lin", "depth", self._depth),
+            SLMap(0.0, 1.0, "lin", "feedback", self._feedback),
+            SLMap(0.0, 1.0, "lin", "bal", self._bal),
+            SLMapMul(self._mul),
+        ]
+        PyoObject.ctrl(self, map_list, title, wxnoserver)
