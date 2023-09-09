@@ -1,6 +1,7 @@
 from pyo import *
 
 
+# AI created / does not work yet - experimental...
 class Phaser(PyoObject):
     def __init__(self, input, depth=0.5, feedback=0.5, bal=0.5, mul=1, add=0):
         pyoArgsAssert(self, "oOOOOO", input, depth, feedback, bal, mul, add)
