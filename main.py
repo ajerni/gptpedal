@@ -1,7 +1,7 @@
 from pyo import *
 from aifunctions import generateEffect
 
-from aifunctions import createNewClass
+# from aifunctions import createNewClass
 from fxchain import fxChain
 import ast
 from presets import presets
@@ -16,6 +16,7 @@ def getGPTeffect(q):
 
 def getPresetEffect(p):
     sel_dict = p
+    print(sel_dict)
     startServer(sel_dict)
 
 
@@ -28,7 +29,7 @@ def startServer(sel_dict):
         sel_dict,
     )
 
-    output.mix(2).out()
+    stereo = output.mix(2).out()
 
     s.gui(locals())
 
@@ -37,7 +38,7 @@ if __name__ == "__main__":
     # q = "a long delay"
     # getGPTeffect(q)
 
-    p = presets.PHASER
+    p = presets.CHORUS
     getPresetEffect(p)
 
     # experimental to create whole new pyo classes
