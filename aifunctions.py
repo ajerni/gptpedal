@@ -78,17 +78,17 @@ def generateEffect(query):
 
 
 def createNewClass(query):
-    loader = TextLoader("effects_full.txt")
-    documents = loader.load()
-    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-    docs = text_splitter.split_documents(documents)
+    # loader = TextLoader("effects_full.txt")
+    # documents = loader.load()
+    # text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    # docs = text_splitter.split_documents(documents)
 
     embeddings = OpenAIEmbeddings()
 
-    vectorstore = FAISS.from_documents(docs, embeddings)
+    # vectorstore = FAISS.from_documents(docs, embeddings)
 
-    vectorstore.save_local("./", "faiss_effects_full")
-    # vectorstore = FAISS.load_local("./", embeddings, "faiss_effects_full")
+    # vectorstore.save_local("./", "faiss_effects_full")
+    vectorstore = FAISS.load_local("./", embeddings, "faiss_effects_full")
 
     llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 

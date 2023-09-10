@@ -184,4 +184,18 @@ def fxChain(input, selections):
     if fx14_params.get("use") == 1:
         fx14.ctrl(title="Phaser")
 
+    # fx15_params = selections.get("flanger", {})
+    # fx15 = Flanger(
+    #     fx14_out,
+    #     depth=fx15_params.get("depth", 1),
+    #     feedback=fx15_params.get("feedback", 0.25),
+    #     delay=fx15_params.get("delay", 0.003),
+    #     rate=fx15_params.get("rate", 0.2),
+    #     mul=fx15_params.get("mul", 1),
+    #     add=fx15_params.get("add", 0),
+    # )
+    # fx15_out = Interp(fx14_out, fx15, interp=fx15_params.get("use", 0))
+    # if fx15_params.get("use") == 1:
+    #     fx15.ctrl(title="Flanger")
+
     return fx14_out

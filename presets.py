@@ -77,6 +77,17 @@ class Presets:
             "add": 0,
         }
     }
+    FLANGER: dict = {
+        "flanger": {
+            "use": 1,
+            "depth": 1,
+            "feedback": 0.25,
+            "delay": 0.003,
+            "rate": 0.2,
+            "mul": 1,
+            "add": 0,
+        }
+    }
     DOUBLEDELAY: dict = {
         "delay": {
             "use": 1,

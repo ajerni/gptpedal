@@ -41,13 +41,13 @@ if __name__ == "__main__":
     getPresetEffect(p)
 
     # experimental to create whole new pyo classes
-    #
+
     #  - move output to own_classes.py
     #  - add it to the presets.py file
     #  - add it to the sel_defaults_values.txt
     #  - add it to the fxchain.py file
-    #
-    # class_name = "Phaser"
+
+    # class_name = "Flanger"
 
     # createNewClass(
     #     f"""You are Python expert using the pyo library to create sound effects.
@@ -55,5 +55,13 @@ if __name__ == "__main__":
     # that creates a {class_name} effect. You also have to implement a {class_name}
     # algorithm in order to make the class work. Also add the corresponding
     # '.ctrl(title="{class_name}")' method to the class.")
+    # My intention is to use this {class_name} effect like this: {class_name}(
+    #     input,
+    #     ...,
+    #     ...,
+    #     ...,
+    #     mul=1,
+    #     add=0
+    # ) input is my guitar audio signal which I captured with Input() in the main code
     # """
     # )
