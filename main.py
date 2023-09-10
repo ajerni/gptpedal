@@ -34,11 +34,11 @@ def startServer(sel_dict):
 
 
 if __name__ == "__main__":
-    q = "a long delay"
-    getGPTeffect(q)
+    # q = "a long delay"
+    # getGPTeffect(q)
 
-    # p = presets.DOPPELVERB
-    # getPresetEffect(p)
+    p = presets.PHASER
+    getPresetEffect(p)
 
     # experimental to create whole new pyo classes
     #
