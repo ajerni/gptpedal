@@ -41,7 +41,7 @@ if __name__ == "__main__":
     p = presets.SHINY
     getPresetEffect(p)
 
-    # experimental to create whole new pyo classes
+    # experimental to create whole new pyo classes (prompt works - outputs need rework)
 
     #  - move output to own_classes.py
     #  - add it to the presets.py file

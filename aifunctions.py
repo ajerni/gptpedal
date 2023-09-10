@@ -1,11 +1,13 @@
 from langchain.embeddings import OpenAIEmbeddings
-from langchain.text_splitter import (
-    RecursiveCharacterTextSplitter,
-    CharacterTextSplitter,
-)
+
+# from langchain.text_splitter import (
+#     RecursiveCharacterTextSplitter,
+#     CharacterTextSplitter,
+# )
 from langchain.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
-from langchain.document_loaders import TextLoader
+
+# from langchain.document_loaders import TextLoader
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
 from langchain.prompts.chat import (

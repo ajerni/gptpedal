@@ -1,7 +1,7 @@
 from pyo import *
 
 
-# AI created / Phaser works / Flanger experimental...
+# AI created - experimental / Phaser works / Flanger needs rework...
 
 
 class Phaser(PyoObject):
