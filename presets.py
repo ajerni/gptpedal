@@ -99,6 +99,18 @@ class Presets:
         },
         "sdelay": {"use": 1, "delay": 0.25, "maxdelay": 1, "mul": 1, "add": 0},
     }
+    SHINY: dict = {
+        "stereoreverb": {
+            "use": 1,
+            "inpos": 0.5,
+            "revtime": 2,
+            "cutoff": 8000,
+            "bal": 1,
+            "roomSize": 2,
+            "mul": 1,
+            "add": 0,
+        }
+    }
 
 
 presets = Presets()

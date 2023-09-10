@@ -35,10 +35,10 @@ def startServer(sel_dict):
 
 
 if __name__ == "__main__":
-    # q = "a long delay"
+    # q = "a shiny loud reverb"
     # getGPTeffect(q)
 
-    p = presets.CHORUS
+    p = presets.SHINY
     getPresetEffect(p)
 
     # experimental to create whole new pyo classes

@@ -1,6 +1,6 @@
 from pyo import *
 
-# from own_classes import *
+from own_classes import *
 
 
 def fxChain(input, selections):
@@ -171,18 +171,18 @@ def fxChain(input, selections):
     if fx13_params.get("use") == 1:
         fx13.ctrl(title="Frequency Shifter")
 
-    # fx14_params = selections.get("phaser", {})
-    # fx14 = Phaser(
-    #     fx13_out,
-    #     depth=fx14_params.get("depth", 1),
-    #     feedback=fx14_params.get("feedback", 0.25),
-    #     bal=fx14_params.get("bal", 0.5),
-    #     mul=fx14_params.get("mul", 1),
-    #     add=fx14_params.get("add", 0),
-    # )
-    # fx14_out = Interp(fx13_out, fx14, interp=fx14_params.get("use", 0))
-    # if fx14_params.get("use") == 1:
-    #     fx14.ctrl(title="Phaser")
+    fx14_params = selections.get("phaser", {})
+    fx14 = Phaser(
+        fx13_out,
+        depth=fx14_params.get("depth", 1),
+        feedback=fx14_params.get("feedback", 0.25),
+        bal=fx14_params.get("bal", 0.5),
+        mul=fx14_params.get("mul", 1),
+        add=fx14_params.get("add", 0),
+    )
+    fx14_out = Interp(fx13_out, fx14, interp=fx14_params.get("use", 0))
+    if fx14_params.get("use") == 1:
+        fx14.ctrl(title="Phaser")
 
     # fx15_params = selections.get("flanger", {})
     # fx15 = Flanger(
@@ -198,4 +198,4 @@ def fxChain(input, selections):
     # if fx15_params.get("use") == 1:
     #     fx15.ctrl(title="Flanger")
 
-    return fx13_out
+    return fx14_out
